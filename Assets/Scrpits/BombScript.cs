@@ -19,7 +19,7 @@ public class BombScript : MonoBehaviour
 
     public void Explode()
     {
-
+        
         Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, fieldOfImpact, layerToHit);
         foreach (Collider2D obj in objects)
         {
@@ -34,10 +34,10 @@ public class BombScript : MonoBehaviour
     {
         await Task.Delay(500).ConfigureAwait(true);
         gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 180);
-
+        
         await Task.Delay(500).ConfigureAwait(true);
         gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
-
+        
         await Task.Delay(500).ConfigureAwait(true);
         Explode();
         Destroy(this);

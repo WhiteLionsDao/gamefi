@@ -2,12 +2,18 @@ using UnityEngine;
 
 public class Contreller : MonoBehaviour
 {
-
+            // static ne dir araÅŸtÄ±r
     Rigidbody2D rb { get; set; } // erisim belirleyici eksik
 
     public float Speed { get; set; } = 150f;
+    private int _health = 2;
+    public int Health
+    {
+        get { return _health; }
+        set { _health = value; }
+    }
     public bool SagYon { get; set; } = true; // Prop kullanmiyorsan awake metodunda ilklendirme yapabilirsin
-    private bool Zipla { get; set; } = true; // private public ????
+    private bool Zipla { get; set; } = true; 
     public float jump_force;
     [SerializeField] private float jetpackForce = 5f; // Jetpack itme kuvveti
 
@@ -25,9 +31,9 @@ public class Contreller : MonoBehaviour
     [SerializeField] float force;
     [SerializeField] LayerMask layerToHit;
 
-    public GameObject firlatilacakPrefab; // Fýrlatýlacak nesnenin prefabý
-    public Transform firlatmaNoktasi; // Fýrlatma noktasý
-    public float firlatmaGucu = 10f; // Fýrlatma gücü
+    public GameObject firlatilacakPrefab; // Fï¿½rlatï¿½lacak nesnenin prefabï¿½
+    public Transform firlatmaNoktasi; // Fï¿½rlatma noktasï¿½
+    public float firlatmaGucu = 10f; // Fï¿½rlatma gï¿½cï¿½
 
 
     public void Start()
@@ -38,7 +44,7 @@ public class Contreller : MonoBehaviour
 
     public void Update()
     {
-
+        Debug.Log($"<color=red>Speed: </color>" + Health);
         if (IsGround())
         {
             coyoteTimeCounter = coyoteTime;
@@ -86,7 +92,7 @@ public class Contreller : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "YER") 
         {
